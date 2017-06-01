@@ -23,6 +23,7 @@ echo $HOME
 mkdir -p $HOME/enchant
 # to trick enchant build that can't be done directly in BUILD_DIR?
 mkdir -p $BUILD_DIR/enchant
+mkdir -p $BUILD_DIR/.heroku/vendor/enchant
 
 # Switch to the repo's context.
 pushd $BUILD_DIR
@@ -44,6 +45,7 @@ chmod -R $HOME/enchant
 
 # further try with copy
 cp -a $HOME/enchant/* $BUILD_DIR/enchant
+cp -a $HOME/enchant/* $BUILD_DIR/.heroku/vendor/enchant
 
 chmod -R $BUILD_DIR/enchant
 
@@ -53,6 +55,8 @@ ls -al $BUILD_DIR/enchant
 
 # add to path
 export PATH=$PATH:$HOME/enchant/bin
+export PATH=$PATH:$HOME/.heroku/vendor/bin
+export PATH=$PATH:$BUILD_DIR/enchant/bin
 
 echo "-----> AFTER Enchant is here:"
 which enchant
