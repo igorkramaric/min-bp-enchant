@@ -46,9 +46,13 @@ chmod -R 755 $HOME/enchant
 # further try with copy
 cp -a $HOME/enchant/* $BUILD_DIR/enchant
 cp -a $HOME/enchant/* $BUILD_DIR/.heroku/vendor/enchant
+cp -a $HOME/enchant/* $HOME/.heroku/vendor/enchant
+cp -a $HOME/enchant/* $HOME/.heroku/vendor
 
 chmod -R 755 $BUILD_DIR/enchant
 chmod -R 755 $BUILD_DIR/.heroku/vendor/enchant
+chmod -R 755 $HOME/.heroku/vendor/enchant
+chmod -R 755 $HOME/.heroku/vendor
 
 # so it's all here I guess
 echo "-----> This is Enchant in build directory:"
@@ -59,12 +63,16 @@ export PATH=$PATH:$HOME/enchant/bin
 export PATH=$PATH:$BUILD_DIR/enchant/bin
 export PATH=$PATH:$HOME/.heroku/vendor/enchant/bin
 export PATH=$PATH:$BUILD_DIR/.heroku/vendor/enchant/bin
+export PATH=$PATH:$HOME/.heroku/vendor/bin
 
 echo "-----> AFTER Enchant is here:"
 which enchant
 
 echo "-----> AFTER Checking entire system for enchant:"
 find / -name enchant
+
+echo "-----> here is lib:"
+ls -al $HOME/.heroku/vendor/enchant/lib
 
 popd
 popd
