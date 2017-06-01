@@ -3,10 +3,10 @@
 # Paths.
 BUILD_DIR=$1
 
-echo "-----> Is enchant here?"
+echo "-----> BEFORE Is enchant here?"
 which enchant
 
-echo "-----> Checking entire system:"
+echo "-----> BEFORE Checking entire system:"
 find / -name enchant
 
 echo "-----> where is home"
@@ -34,10 +34,10 @@ make install
 # add to path
 export PATH=$PATH:$HOME
 
-echo "-----> Enchant is here:"
+echo "-----> AFTER Enchant is here:"
 which enchant
 
-echo "-----> Checking entire system:"
+echo "-----> AFTER Checking entire system:"
 find / -name enchant
 
 popd
