@@ -3,6 +3,15 @@
 # Paths.
 BUILD_DIR=$1
 
+echo "-----> Is enchant here?"
+which enchant
+
+echo "-----> Checking entire system:"
+find / -name enchant
+
+echo "-----> where is home"
+echo $HOME
+
 # we need to put a bunch of symlinks in there later
 mkdir -p /app/.heroku/vendor
 
