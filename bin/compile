@@ -40,8 +40,12 @@ make
 echo "-----> Installing enchant"
 make install
 
+chmod -R $HOME/enchant
+
 # further try with copy
 cp -a $HOME/enchant/* $BUILD_DIR/enchant
+
+chmod -R $BUILD_DIR/enchant
 
 # so it's all here I guess
 echo "-----> This is Enchant in build directory:"
