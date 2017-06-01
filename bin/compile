@@ -20,7 +20,9 @@ echo "-----> where is home"
 echo $HOME
 
 # we need to put a bunch of symlinks in there later
-mkdir -p /app/.heroku/vendor
+mkdir -p $HOME/enchant
+# to trick enchant build that can't be done directly in BUILD_DIR?
+mkdir -p $BUILD_DIR/enchant
 
 # Switch to the repo's context.
 pushd $BUILD_DIR
@@ -32,19 +34,26 @@ tar -xvzf enchant-1.6.0.tar.gz
 
 echo "-----> Building enchant"
 cd enchant-1.6.0
-./configure --prefix=$HOME --with-aspell-prefix=$BUILD_DIR/vendor/aspell
+./configure --prefix=$HOME/enchant --with-aspell-prefix=$BUILD_DIR/vendor/aspell
 make
 
 echo "-----> Installing enchant"
 make install
 
+# further try with copy
+cp $HOME/enchant/* $BUILD_DIR/enchant
+
+# so it's all here I guess
+echo "-----> This is Enchant in build directory:"
+ls -al $BUILD_DIR/enchant
+
 # add to path
-export PATH=$PATH:$HOME
+export PATH=$PATH:$HOME/enchant/bin
 
 echo "-----> AFTER Enchant is here:"
 which enchant
 
-echo "-----> AFTER Checking entire system:"
+echo "-----> AFTER Checking entire system for enchant:"
 find / -name enchant
 
 popd
