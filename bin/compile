@@ -43,6 +43,10 @@ make install
 
 chmod -R 755 $HOME/enchant
 
+mkdir $HOME/.heroku
+mkdir $HOME/.heroku/vendor
+mkdir $HOME/.heroku/vendor/enchant
+
 # further try with copy
 cp -a $HOME/enchant/* $BUILD_DIR/enchant
 cp -a $HOME/enchant/* $BUILD_DIR/.heroku/vendor/enchant
