@@ -9,51 +9,27 @@ mkdir -p /app/.heroku/vendor
 # Switch to the repo's context.
 pushd $BUILD_DIR
 
-# Restore old artifacts from the cache.
-mkdir -p /app/vendor
-
 echo "-----> Getting enchant"
-pushd $(mktemp -d)
+pushd $BUILD_DIR
 curl -s -L -o enchant-1.6.0.tar.gz https://analytics-p-junk.s3.amazonaws.com/enchant-1.6.0-source.tar.gz
 tar -xvzf enchant-1.6.0.tar.gz
 
 echo "-----> Building enchant"
 cd enchant-1.6.0
-./configure --prefix=/app/vendor --with-aspell-prefix=$BUILD_DIR/vendor/aspell
+./configure --prefix=$HOME --with-aspell-prefix=$BUILD_DIR/vendor/aspell
 make
 
 echo "-----> Installing enchant"
 make install
 
 # add to path
-export PATH=$PATH:/app/vendor/bin
+export PATH=$PATH:$HOME
 
 echo "-----> Enchant is here:"
 which enchant
 
 echo "-----> Checking entire system:"
 find / -name enchant
-
-mkdir -p $BUILD_DIR/vendor
-mkdir -p $BUILD_DIR/vendor/enchant
-mkdir -p $BUILD_DIR/vendor/enchant/bin
-
-echo "-----> copy 1:"
-cp /app/vendor/bin/* /app/vendor/enchant/bin
-chmod +x /app/vendor/enchant/bin/*
-
-echo "-----> copy 2:"
-cp /app/vendor/bin/* /app/vendor/enchant/bin
-chmod +x /app/bin/*
-
-echo "-----> copy 2 end:"
-
-echo "hey man" > /app/app_newfile.txt
-echo "hey man" > /app/vendor/vendor_newfile.txt
-echo "hey man" > /app/vendor/bin/bin_newfile.txt
-
-echo "-----> Finding *newfile.txt:"
-find / -name *_newfile.txt
 
 popd
 popd
