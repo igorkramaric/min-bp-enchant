@@ -1,1 +1,6 @@
 #!/usr/bin/env bash
+cat <<EOF
+---
+config_vars:
+PATH: $HOME/enchant/bin:$HOME/.heroku/vendor/enchant/bin:$PATH
+EOF
