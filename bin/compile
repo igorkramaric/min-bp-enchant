@@ -6,8 +6,15 @@ BUILD_DIR=$1
 echo "-----> BEFORE Is enchant here?"
 which enchant
 
-echo "-----> BEFORE Checking entire system:"
+echo "-----> BEFORE Checking entire system for enchant:"
 find / -name enchant
+
+echo "-----> BEFORE Is gettext here?"
+which enchant
+
+echo "-----> BEFORE Checking entire system for gettext:"
+find / -name enchant
+
 
 echo "-----> where is home"
 echo $HOME
