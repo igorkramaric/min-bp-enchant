@@ -41,7 +41,7 @@ echo "-----> Installing enchant"
 make install
 
 # further try with copy
-cp $HOME/enchant/* $BUILD_DIR/enchant
+cp -a $HOME/enchant/* $BUILD_DIR/enchant
 
 # so it's all here I guess
 echo "-----> This is Enchant in build directory:"
