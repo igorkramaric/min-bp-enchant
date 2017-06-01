@@ -31,22 +31,29 @@ export PATH=$PATH:/app/vendor/bin
 echo "-----> Enchant is here:"
 which enchant
 
+echo "-----> Checking entire system:"
+find / -name enchant
+
 mkdir -p $BUILD_DIR/vendor
 mkdir -p $BUILD_DIR/vendor/enchant
+mkdir -p $BUILD_DIR/vendor/enchant/bin
 
 echo "-----> copy 1:"
-cp /app/vendor/bin/* $BUILD_DIR/vendor/enchant/bin
-chmod +x ${BUILD_DIR}/vendor/enchant/bin/*
+cp /app/vendor/bin/* /app/vendor/enchant/bin
+chmod +x /app/vendor/enchant/bin/*
 
 echo "-----> copy 2:"
-cp /app/vendor/bin/* $BUILD_DIR/vendor/enchant/bin
-chmod +x ${BUILD_DIR}/bin/*
+cp /app/vendor/bin/* /app/vendor/enchant/bin
+chmod +x /app/bin/*
 
 echo "-----> copy 2 end:"
 
 echo "hey man" > /app/app_newfile.txt
 echo "hey man" > /app/vendor/vendor_newfile.txt
 echo "hey man" > /app/vendor/bin/bin_newfile.txt
+
+echo "-----> Finding *newfile.txt:"
+find / -name *_newfile.txt
 
 popd
 popd
