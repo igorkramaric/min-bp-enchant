@@ -3,18 +3,6 @@
 # Paths.
 BUILD_DIR=$1
 
-echo "-----> BEFORE Is enchant here?"
-which enchant
-
-echo "-----> BEFORE Checking entire system for enchant:"
-find / -name enchant
-
-echo "-----> BEFORE Is gettext here?"
-which enchant
-
-echo "-----> BEFORE Checking entire system for gettext:"
-find / -name enchant
-
 # here goes the first deploy after build
 mkdir -p $HOME/enchant
 
@@ -45,26 +33,12 @@ cp -a $HOME/enchant/* $BUILD_DIR/enchant
 cp -a $HOME/enchant/* $BUILD_DIR/.heroku/vendor/enchant
 cp -a $HOME/enchant/* $BUILD_DIR/.heroku/vendor
 
-chmod -R 755 $BUILD_DIR/enchant
-chmod -R 755 $BUILD_DIR/.heroku/vendor/enchant
-chmod -R 755 $BUILD_DIR/.heroku/vendor
-
-# so it's all here I guess
-echo "-----> This is Enchant in build directory:"
-ls -al $BUILD_DIR/enchant
-
 # add to path
 export PATH=$PATH:$HOME/enchant/bin
 
 # try without these
 export PATH=$PATH:$BUILD_DIR/enchant/bin
 export PATH=$PATH:$BUILD_DIR/.heroku/vendor/enchant/bin
-
-echo "-----> AFTER Enchant is here:"
-which enchant
-
-echo "-----> AFTER Checking entire system for enchant:"
-find / -name enchant
 
 popd
 popd
