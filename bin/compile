@@ -82,3 +82,6 @@ ls -al $HOME/.heroku/vendor/enchant/lib
 
 popd
 popd
+
+mkdir -p $BUILD_DIR/.profile.d
+echo 'PATH=$PATH:$HOME/enchant/bin' > $BUILD_DIR/.profile.d/go.sh
