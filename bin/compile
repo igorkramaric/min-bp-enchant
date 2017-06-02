@@ -28,17 +28,10 @@ make install
 
 chmod -R 755 $HOME/enchant
 
-# further try with copy
+# these are places required by different phases of deploy/runtime
 cp -a $HOME/enchant/* $BUILD_DIR/enchant
 cp -a $HOME/enchant/* $BUILD_DIR/.heroku/vendor/enchant
 cp -a $HOME/enchant/* $BUILD_DIR/.heroku/vendor
-
-# add to path
-export PATH=$PATH:$HOME/enchant/bin
-
-# try without these
-export PATH=$PATH:$BUILD_DIR/enchant/bin
-export PATH=$PATH:$BUILD_DIR/.heroku/vendor/enchant/bin
 
 popd
 popd
