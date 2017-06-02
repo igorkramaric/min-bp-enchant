@@ -2,5 +2,5 @@
 cat <<EOF
 ---
 config_vars:
-PATH: $HOME/enchant/bin:$HOME/.heroku/vendor/enchant/bin:$PATH
+PATH: /app/enchant/bin:$PATH
 EOF
