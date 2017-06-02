@@ -50,11 +50,13 @@ mkdir $HOME/.heroku/vendor/enchant
 # further try with copy
 cp -a $HOME/enchant/* $BUILD_DIR/enchant
 cp -a $HOME/enchant/* $BUILD_DIR/.heroku/vendor/enchant
+cp -a $HOME/enchant/* $BUILD_DIR/.heroku/vendor
 cp -a $HOME/enchant/* $HOME/.heroku/vendor/enchant
 cp -a $HOME/enchant/* $HOME/.heroku/vendor
 
 chmod -R 755 $BUILD_DIR/enchant
 chmod -R 755 $BUILD_DIR/.heroku/vendor/enchant
+chmod -R 755 $BUILD_DIR/.heroku/vendor
 chmod -R 755 $HOME/.heroku/vendor/enchant
 chmod -R 755 $HOME/.heroku/vendor
 
