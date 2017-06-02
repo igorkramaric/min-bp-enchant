@@ -15,12 +15,9 @@ which enchant
 echo "-----> BEFORE Checking entire system for gettext:"
 find / -name enchant
 
-
-echo "-----> where is home"
-echo $HOME
-
-# we need to put a bunch of symlinks in there later
+# here goes the first deploy after build
 mkdir -p $HOME/enchant
+
 # to trick enchant build that can't be done directly in BUILD_DIR?
 mkdir -p $BUILD_DIR/enchant
 mkdir -p $BUILD_DIR/.heroku/vendor/enchant
@@ -43,22 +40,14 @@ make install
 
 chmod -R 755 $HOME/enchant
 
-mkdir $HOME/.heroku
-mkdir $HOME/.heroku/vendor
-mkdir $HOME/.heroku/vendor/enchant
-
 # further try with copy
 cp -a $HOME/enchant/* $BUILD_DIR/enchant
 cp -a $HOME/enchant/* $BUILD_DIR/.heroku/vendor/enchant
 cp -a $HOME/enchant/* $BUILD_DIR/.heroku/vendor
-cp -a $HOME/enchant/* $HOME/.heroku/vendor/enchant
-cp -a $HOME/enchant/* $HOME/.heroku/vendor
 
 chmod -R 755 $BUILD_DIR/enchant
 chmod -R 755 $BUILD_DIR/.heroku/vendor/enchant
 chmod -R 755 $BUILD_DIR/.heroku/vendor
-chmod -R 755 $HOME/.heroku/vendor/enchant
-chmod -R 755 $HOME/.heroku/vendor
 
 # so it's all here I guess
 echo "-----> This is Enchant in build directory:"
@@ -69,18 +58,13 @@ export PATH=$PATH:$HOME/enchant/bin
 
 # try without these
 export PATH=$PATH:$BUILD_DIR/enchant/bin
-export PATH=$PATH:$HOME/.heroku/vendor/enchant/bin
 export PATH=$PATH:$BUILD_DIR/.heroku/vendor/enchant/bin
-export PATH=$PATH:$HOME/.heroku/vendor/bin
 
 echo "-----> AFTER Enchant is here:"
 which enchant
 
 echo "-----> AFTER Checking entire system for enchant:"
 find / -name enchant
-
-echo "-----> here is lib:"
-ls -al $HOME/.heroku/vendor/enchant/lib
 
 popd
 popd
