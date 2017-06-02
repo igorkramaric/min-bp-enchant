@@ -66,10 +66,10 @@ ls -al $BUILD_DIR/enchant
 export PATH=$PATH:$HOME/enchant/bin
 
 # try without these
-#export PATH=$PATH:$BUILD_DIR/enchant/bin
-#export PATH=$PATH:$HOME/.heroku/vendor/enchant/bin
-#export PATH=$PATH:$BUILD_DIR/.heroku/vendor/enchant/bin
-#export PATH=$PATH:$HOME/.heroku/vendor/bin
+export PATH=$PATH:$BUILD_DIR/enchant/bin
+export PATH=$PATH:$HOME/.heroku/vendor/enchant/bin
+export PATH=$PATH:$BUILD_DIR/.heroku/vendor/enchant/bin
+export PATH=$PATH:$HOME/.heroku/vendor/bin
 
 echo "-----> AFTER Enchant is here:"
 which enchant
